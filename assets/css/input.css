@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.join>.join-item:last-of-type:not(:first-child) {
+    border-top-right-radius: inherit !important;
+    border-bottom-right-radius: inherit !important;
+}
+
+.join {
+    align-items: center;
+}
+
+.form-control>label {
+    @apply mb-1 text-sm;
+}
+
+input[type="text"],
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"] {
+    @apply input input-bordered w-full;
+}
+
+input[type="number"] {
+    @apply text-center;
+    /* max-width: -webkit-fill-available; */
+}
+
+/* input that has data-metric */
+
+
+.write-btn {
+    @apply btn btn-square btn-neutral;
+}
+
+.label-text {
+    @apply text-base;
+}
+
+
+.tags-look .tagify__dropdown__item {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 3px;
+    padding: .3em .5em;
+    border: 1px solid #CCC;
+    background: #F3F3F3;
+    margin: .2em;
+    font-size: .85em;
+    color: black;
+    transition: 0s;
+}
+
+.tags-look .tagify__dropdown__item--active {
+    color: black;
+}
+
+.tags-look .tagify__dropdown__item:hover {
+    background: lightyellow;
+    border-color: gold;
+}
+
+.tags-look .tagify__dropdown__item--hidden {
+    max-width: 0;
+    max-height: initial;
+    padding: .3em 0;
+    margin: .2em 0;
+    white-space: nowrap;
+    text-indent: -20px;
+    border: 0;
+}
+
+.tagify--outside{
+    border: 0 !important;
+}
+
+.tagify--outside .tagify__input{
+  /* order: -1; */
+  flex: 100%;
+  margin-top: 1em;
+  /* color: white !important; */
+  --placeholder-color: var(--tags-placeholder-color);
+  @apply pt-3 pb-1 input input-bordered text-base-content border-base-content ;
+}
+
+/* .tagify--outside .tagify__input:hover{ border-color:var(--tags-hover-border-color); }
+.tagify--outside.tagify--focus .tagify__input{
+  transition:0s;
+  border-color: var(--tags-focus-border-color);
+} */

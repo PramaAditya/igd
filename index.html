@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="true" />
+
+    <title>IGD Form</title>
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script type="text/javascript" src="node_modules/iink-js/dist/iink.min.js"></script>
+    <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify@4.17.8/dist/tagify.min.css">
+
+</head>
+
+<body>
+    <form id="igd_form" class="px-5 py-5 pb-[120px]">
+        <fieldset class="flex justify-between gap-6 max-w-full">
+            <field class="form-control w-full">
+                <label>Tensi (Blood Pressure)</label>
+                <div class="join">
+                    <a class="write-btn join-item" onclick="handwriting_modal.showModal()"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd"
+                                d="M20.599 1.5c-.376 0-.743.111-1.055.32l-5.08 3.385a18.747 18.747 0 00-3.471 2.987 10.04 10.04 0 014.815 4.815 18.748 18.748 0 002.987-3.472l3.386-5.079A1.902 1.902 0 0020.599 1.5zm-8.3 14.025a18.76 18.76 0 001.896-1.207 8.026 8.026 0 00-4.513-4.513A18.75 18.75 0 008.475 11.7l-.278.5a5.26 5.26 0 013.601 3.602l.502-.278zM6.75 13.5A3.75 3.75 0 003 17.25a1.5 1.5 0 01-1.601 1.497.75.75 0 00-.7 1.123 5.25 5.25 0 009.8-2.62 3.75 3.75 0 00-3.75-3.75z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+                    </a>
+                    <input name="blood_pressure" type="text" data-mask="000/00"
+                        class="join-item text-center min-w-[90px]" placeholder="xxx/xx">
+                    <span class="ml-2">mmHg</span>
+                </div>
+            </field>
+            <field class="form-control w-full">
+                <label>Nadi (Pulse)</label>
+                <div class="join">
+                    <a class="write-btn join-item" onclick="handwriting_modal.showModal()"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd"
+                                d="M20.599 1.5c-.376 0-.743.111-1.055.32l-5.08 3.385a18.747 18.747 0 00-3.471 2.987 10.04 10.04 0 014.815 4.815 18.748 18.748 0 002.987-3.472l3.386-5.079A1.902 1.902 0 0020.599 1.5zm-8.3 14.025a18.76 18.76 0 001.896-1.207 8.026 8.026 0 00-4.513-4.513A18.75 18.75 0 008.475 11.7l-.278.5a5.26 5.26 0 013.601 3.602l.502-.278zM6.75 13.5A3.75 3.75 0 003 17.25a1.5 1.5 0 01-1.601 1.497.75.75 0 00-.7 1.123 5.25 5.25 0 009.8-2.62 3.75 3.75 0 00-3.75-3.75z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+                    </a>
+                    <input name="pulse" type="number" class="join-item">
+                    <span class="ml-2">/mnt</span>
+                </div>
+            </field>
+            <field class="form-control w-full">
+                <label>Nafas (RR)</label>
+                <div class="join">
+                    <a class="write-btn join-item" onclick="handwriting_modal.showModal()"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd"
+                                d="M20.599 1.5c-.376 0-.743.111-1.055.32l-5.08 3.385a18.747 18.747 0 00-3.471 2.987 10.04 10.04 0 014.815 4.815 18.748 18.748 0 002.987-3.472l3.386-5.079A1.902 1.902 0 0020.599 1.5zm-8.3 14.025a18.76 18.76 0 001.896-1.207 8.026 8.026 0 00-4.513-4.513A18.75 18.75 0 008.475 11.7l-.278.5a5.26 5.26 0 013.601 3.602l.502-.278zM6.75 13.5A3.75 3.75 0 003 17.25a1.5 1.5 0 01-1.601 1.497.75.75 0 00-.7 1.123 5.25 5.25 0 009.8-2.62 3.75 3.75 0 00-3.75-3.75z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+                    </a>
+                    <input name="respitory_rate" type="number" class="join-item">
+                    <span class="ml-2">/mnt</span>
+                </div>
+            </field>
+            <field class="form-control w-full">
+                <label>Suhu</label>
+                <div class="join">
+                    <a class="write-btn join-item" onclick="handwriting_modal.showModal()"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd"
+                                d="M20.599 1.5c-.376 0-.743.111-1.055.32l-5.08 3.385a18.747 18.747 0 00-3.471 2.987 10.04 10.04 0 014.815 4.815 18.748 18.748 0 002.987-3.472l3.386-5.079A1.902 1.902 0 0020.599 1.5zm-8.3 14.025a18.76 18.76 0 001.896-1.207 8.026 8.026 0 00-4.513-4.513A18.75 18.75 0 008.475 11.7l-.278.5a5.26 5.26 0 013.601 3.602l.502-.278zM6.75 13.5A3.75 3.75 0 003 17.25a1.5 1.5 0 01-1.601 1.497.75.75 0 00-.7 1.123 5.25 5.25 0 009.8-2.62 3.75 3.75 0 00-3.75-3.75z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+                    </a>
+                    <input name="temperature" type="number" class="join-item">
+                    <span class="ml-2">°C</span>
+                </div>
+            </field>
+
+        </fieldset>
+        <fieldset class="py-10">
+            <label for="vas" class="mb-5 block">Rasa Sakit (VAS)</label>
+            <input name="vas" type="range" min="0" max="10" value="0" class="range range-lg" step="1" />
+            <div class="w-full flex justify-between text-lg">
+                <div class="font-semibold text-[1.15em] text-center">0<br>😀</div>
+                <div class="text-center">1</div>
+                <div class="font-semibold text-[1.15em] text-center">2<br>🙂</div>
+                <div class="text-center">3</div>
+                <div class="font-semibold text-[1.15em] text-center">4<br>😐</div>
+                <div class="text-center">5</div>
+                <div class="font-semibold text-[1.15em] text-center">6<br>🙁</div>
+                <div class="text-center">7</div>
+                <div class="font-semibold text-[1.15em] text-center">8<br>😩</div>
+                <div class="text-center">9</div>
+                <div class="font-semibold text-[1.15em] text-center">10<br>😭</div>
+            </div>
+        </fieldset>
+        <fieldset class="form-control relative">
+            <label for="anemesis" class="mb-5 flex w-full gap-2 items-center">
+
+                <span>Anemesis</span>
+            </label>
+            <textarea name="anemesis" id="" rows="5" class="textarea textarea-bordered textarea-lg"></textarea>
+            <a class="write-btn join-item absolute bottom-2 right-2" onclick="handwriting_modal.showModal()"><svg
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path
+                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
+                </svg>
+            </a>
+        </fieldset>
+
+        <fieldset class="form-control mt-8">
+            <label for="allergen_foods">
+                Alergi Makanan
+            </label>
+            <input name="allergen_foods" type="tags" class="tagify--outside" placeholder="Alergi Makanan">
+        </fieldset>
+        <fieldset class="form-control mt-8">
+            <label for="allergen_medicines">
+                Alergi Obat
+            </label>
+            <input name="allergen_medicines" type="tags" class="tagify--outside" placeholder="Alergi Obat">
+        </fieldset>
+
+        <div
+            class="flex items-center gap-4 justify-end fixed w-screen py-4 px-8 border-t-[1px] bg-base-100 z-50 bottom-0 left-0">
+            <span id="saveStatus" class="italic opacity-40">
+
+            </span>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </form>
+
+
+    <dialog id="handwriting_modal" class="modal bg-base-100">
+        <form method="dialog">
+            <div class="flex flex-col w-screen h-screen">
+
+                <div
+                    class="flex w-full border-b-[1px] min-h-[80px] items-center justify-between px-2 text-2xl fixed top-0 left-0 z-30">
+                    <div class="flex flex-col gap-1 text-base-content">
+                        <span id="label" class="text-xs">Hello</span>
+                        <span id="result"></span>
+                    </div>
+                    <button id="done" class="btn btn-success">Submit</button>
+                </div>
+                <div id="editor" touch-action="none" class="h-full grow w-full"></div>
+                <nav class="flex flex-col py-2 items-center border-b-[1px] gap-2 px-2 fixed bottom-5 right-5 z-[100]">
+                    <span id="undo" class="btn btn-circle btn-lg"><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd"
+                                d="M9.53 2.47a.75.75 0 010 1.06L4.81 8.25H15a6.75 6.75 0 010 13.5h-3a.75.75 0 010-1.5h3a5.25 5.25 0 100-10.5H4.81l4.72 4.72a.75.75 0 11-1.06 1.06l-6-6a.75.75 0 010-1.06l6-6a.75.75 0 011.06 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                    <span id="redo" class="btn btn-circle btn-lg"><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd"
+                                d="M14.47 2.47a.75.75 0 011.06 0l6 6a.75.75 0 010 1.06l-6 6a.75.75 0 11-1.06-1.06l4.72-4.72H9a5.25 5.25 0 100 10.5h3a.75.75 0 010 1.5H9a6.75 6.75 0 010-13.5h10.19l-4.72-4.72a.75.75 0 010-1.06z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                    <span id="pen" class="btn btn-circle btn-lg btn-active"><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path
+                                d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
+                        </svg>
+                    </span>
+                    <span id="eraser" class="btn btn-circle btn-lg"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M290.7 57.4L57.4 290.7c-25 25-25 65.5 0 90.5l80 80c12 12 28.3 18.7 45.3 18.7H288h9.4H512c17.7 0 32-14.3 32-32s-14.3-32-32-32H387.9L518.6 285.3c25-25 25-65.5 0-90.5L381.3 57.4c-25-25-65.5-25-90.5 0zM297.4 416H288l-105.4 0-80-80L227.3 211.3 364.7 348.7 297.4 416z"/></svg>
+                    </span>
+                </nav>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/@yaireo/tagify/dist/jQuery.tagify.min.js"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <script src="https://unpkg.com/form-storage@1.2.0/build/form-storage.js"></script>
+
+    <script src="assets/js/input.js"></script>
+    <script src="assets/js/tags.js"></script>
+    <script src="assets/js/writing.js"></script>
+    <script>
+        // save form values in local storage
+        var formStorage = new FormStorage('#igd_form');
+
+        formStorage.apply();
+
+        $('#igd_form').on('change', function () {
+            $('#saveStatus').html('Saving...');
+            formStorage.save();
+            $('#saveStatus').html('Draft Saved');
+            console.log(formStorage);
+        });
+
+        // on form submit clear form storage
+        $('#igd_form').on('submit', function () {
+            formStorage.clear();
+        });
+
+
+    </script>
+</body>
+
+</html>
