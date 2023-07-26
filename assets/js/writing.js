@@ -57,8 +57,8 @@ var $freeEditor = iink.register(editorElement, {
         type: 'TEXT',
         protocol: 'WEBSOCKET',
         server: {
-            applicationKey: 'bdb4ba32-0b0a-40d5-9f4d-3d89764cf83d',
-            hmacKey: 'eae577ea-57c1-49f8-b761-269d98c96b3b'
+            applicationKey: '515131ab-35fa-411c-bb4d-3917e00faf60',
+            hmacKey: '54b2ca8a-6752-469d-87dd-553bb450e9ad'
         },
         iink: {
             lang: "id_ID",
