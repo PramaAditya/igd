@@ -64,13 +64,11 @@ editorElement.addEventListener('exported', (evt) => {
 $customConfig = {};
 $customConfig['addLKText'] = true;
 
-// get medicineNames from /assets/data/medicines_names.txt
-var medicineNames = [];
 $.get('/assets/data/medicines_names.txt', function(data) {
-    medicineNames = data.split('\n');
+    $customConfig['customLexicon'] = data.split('\n');
 });
 
-$customConfig['customLexicon'] = medicineNames;
+
 
 
 var $freeEditor = iink.register(editorElement, {
@@ -88,7 +86,8 @@ var $freeEditor = iink.register(editorElement, {
                 smartGuide: false,
                 guides: {
                     enable: false
-                }
+                },
+                configuration: $customConfig
 
             },
 
@@ -96,9 +95,9 @@ var $freeEditor = iink.register(editorElement, {
                 jiix: {
                     strokes: true
                 }
-            },
+            }
 
-            configuration: $customConfig
+            
 
 
         },
