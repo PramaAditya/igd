@@ -56,8 +56,15 @@ editorElement.addEventListener('exported', (evt) => {
 
 
 //When resultElement is changed, import the value to Editor
-resultElement.addEventListener('change', () => {
+let typingTimer;
+const doneTypingInterval = 1000;
+
+resultElement.addEventListener('input', () => {
+  clearTimeout(typingTimer);
+  typingTimer = setTimeout(() => {
+    // This code will execute after the user stops typing for 0.5 seconds
     editorElement.editor.import_(resultElement.value, 'text/plain');
+  }, doneTypingInterval);
 });
 
 
@@ -139,7 +146,7 @@ var $freeEditor = iink.register(editorElement, {
 
 $freeEditor.theme = { ink: { color: '#FFFFFF' } };
 $freeEditor.penStyle = { 'color': '#FFFFFF', '-myscript-pen-width': '1' };
-// console.log(editorElement.editor.configuration.recognitionParams.iink.text.configuration.customLexicon);
+console.log(editorElement.editor.configuration.recognitionParams.iink.text.configuration.customLexicon);
 
 
 
