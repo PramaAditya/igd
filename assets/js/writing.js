@@ -61,6 +61,18 @@ editorElement.addEventListener('exported', (evt) => {
     // }
 });
 
+$customConfig = {};
+$customConfig['addLKText'] = true;
+
+// get medicineNames from /assets/data/medicines_names.txt
+var medicineNames = [];
+$.get('/assets/data/medicines_names.txt', function(data) {
+    medicineNames = data.split('\n');
+});
+
+$customConfig['customLexicon'] = medicineNames;
+
+
 var $freeEditor = iink.register(editorElement, {
     recognitionParams: {
         type: 'TEXT',
@@ -84,7 +96,9 @@ var $freeEditor = iink.register(editorElement, {
                 jiix: {
                     strokes: true
                 }
-            }
+            },
+
+            configuration: $customConfig
 
 
         },
@@ -94,6 +108,7 @@ var $freeEditor = iink.register(editorElement, {
 
 $freeEditor.theme = { ink: { color: '#FFFFFF' } };
 $freeEditor.penStyle = {'color':'#FFFFFF','-myscript-pen-width':'1'};
+// console.log ($freeEditor.configuration.recognitionParams.iink.text.configuration.customLexicon);
 
 
 
