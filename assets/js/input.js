@@ -53,13 +53,6 @@ $(document).ready(function () {
 
         // if currentInput is textarea, set the dialog data-input-mode to 'textarea'
         if ($currentInput.is('textarea')) {
-            editorElement.editor.configuration.recognitionParams.iink.text.guides.enable = true;
-        } else {
-            editorElement.editor.configuration.recognitionParams.iink.text.guides.enable = false;
-        };
-
-        // if currentInput type!='tags' then 
-        if ($currentInput.attr('type') != 'tags') {
             editorElement.editor.import_($currentValue, 'text/plain');
         };
         
