@@ -56,15 +56,8 @@ editorElement.addEventListener('exported', (evt) => {
 
 
 //When resultElement is changed, import the value to Editor
-let typingTimer;
-const doneTypingInterval = 1000;
-
-resultElement.addEventListener('input', () => {
-  clearTimeout(typingTimer);
-  typingTimer = setTimeout(() => {
-    // This code will execute after the user stops typing for 0.5 seconds
+resultElement.addEventListener('change', () => {
     editorElement.editor.import_(resultElement.value, 'text/plain');
-  }, doneTypingInterval);
 });
 
 
