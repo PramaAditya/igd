@@ -78,7 +78,7 @@
                         </svg>
 
                     </a>
-                    <input name="temperature" type="number" class="join-item">
+                    <input name="temperature" type="number" class="join-item max-w-[60px]">
                     <span class="ml-2">°C</span>
                 </div>
             </field>
@@ -115,18 +115,44 @@
             </a>
         </fieldset>
 
-        <fieldset class="form-control mt-8">
-            <label for="allergen_foods">
-                Alergi Makanan
+        <fieldset class="form-control mt-8 h-[250px] grow-0 w-full relative">
+            <label for="history_case">
+                Riwayat Penyakit
             </label>
-            <input name="allergen_foods" type="tags" class="tagify--outside" placeholder="Alergi Makanan">
+            <input name="history_case" type="tags" placeholder="Tulis atau pilih...">
+            <a class="write-btn join-item absolute bottom-2 right-2" onclick="handwriting_modal.showModal()"><svg
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path
+                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
+                </svg>
+            </a>
         </fieldset>
-        <fieldset class="form-control mt-8">
-            <label for="allergen_medicines">
-                Alergi Obat
-            </label>
-            <input name="allergen_medicines" type="tags" class="tagify--outside" placeholder="Alergi Obat">
-        </fieldset>
+        <div class="flex gap-2 w-full">
+            <fieldset class="relative form-control mt-8 h-[250px] grow-0 w-full">
+                <label for="allergen_foods">
+                    Alergi Makanan
+                </label>
+                <input name="allergen_foods" type="tags" placeholder="Tulis atau pilih...">
+                <a class="write-btn join-item absolute bottom-2 right-2" onclick="handwriting_modal.showModal()"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path
+                            d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
+                    </svg>
+                </a>
+            </fieldset>
+            <fieldset class="relative form-control mt-8 h-[250px] grow-0 w-full">
+                <label for="allergen_medicines">
+                    Alergi Obat
+                </label>
+                <input name="allergen_medicines" type="tags" placeholder=" Tulis atau pilih...">
+                <a class="write-btn join-item absolute bottom-2 right-2" onclick="handwriting_modal.showModal()"><svg
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path
+                            d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
+                    </svg>
+                </a>
+            </fieldset>
+        </div>
 
         <div
             class="flex items-center gap-4 justify-end fixed w-screen py-4 px-8 border-t-[1px] bg-base-100 z-50 bottom-0 left-0">
@@ -138,20 +164,24 @@
     </form>
 
 
-    <dialog id="handwriting_modal" class="modal bg-base-100">
+    <dialog id="handwriting_modal" class="modal bg-base-100" data-input-mode="">
         <form method="dialog">
             <div class="flex flex-col w-screen h-screen">
 
                 <div
-                    class="flex w-full border-b-[1px] min-h-[80px] items-center justify-between px-2 text-2xl fixed top-0 left-0 z-30">
-                    <div class="flex flex-col gap-1 text-base-content">
-                        <span id="label" class="text-xs">Hello</span>
-                        <span id="result"></span>
+                    class="flex w-full border-b-[1px] h-[200px] flex-shrink-0 items-center justify-between px-2 text-2xl py-4">
+                    <div class="flex flex-col gap-2 text-base-content w-full h-full">
+                        <span id="label" class="text-lg">Hello</span>
+                        <div class="flex w-full gap-2 items-center h-full">
+                            <textarea name="result" id="result" placeholder="Tulis dulu dibawah..."
+                                class="h-full text-lg textarea textarea-ghost w-full"></textarea>
+                            <button id="done" class="btn btn-success">Submit</button>
+                        </div>
                     </div>
-                    <button id="done" class="btn btn-success">Submit</button>
+
                 </div>
                 <div id="editor" touch-action="none" class="h-full grow w-full"></div>
-                <nav class="flex flex-col py-2 items-center border-b-[1px] gap-2 px-2 fixed bottom-5 right-5 z-[100]">
+                <nav class="flex flex-col py-2 items-center gap-2 px-2 fixed bottom-5 right-5 z-[100]">
                     <span id="undo" class="btn btn-circle btn-lg"><svg xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                             <path fill-rule="evenodd"
@@ -172,7 +202,16 @@
                                 d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
                         </svg>
                     </span>
-                    <span id="eraser" class="btn btn-circle btn-lg"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M290.7 57.4L57.4 290.7c-25 25-25 65.5 0 90.5l80 80c12 12 28.3 18.7 45.3 18.7H288h9.4H512c17.7 0 32-14.3 32-32s-14.3-32-32-32H387.9L518.6 285.3c25-25 25-65.5 0-90.5L381.3 57.4c-25-25-65.5-25-90.5 0zM297.4 416H288l-105.4 0-80-80L227.3 211.3 364.7 348.7 297.4 416z"/></svg>
+                    <span id="eraser" class="btn btn-circle btn-lg"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                            viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <style>
+                                svg {
+                                    fill: #ffffff
+                                }
+                            </style>
+                            <path
+                                d="M290.7 57.4L57.4 290.7c-25 25-25 65.5 0 90.5l80 80c12 12 28.3 18.7 45.3 18.7H288h9.4H512c17.7 0 32-14.3 32-32s-14.3-32-32-32H387.9L518.6 285.3c25-25 25-65.5 0-90.5L381.3 57.4c-25-25-65.5-25-90.5 0zM297.4 416H288l-105.4 0-80-80L227.3 211.3 364.7 348.7 297.4 416z" />
+                        </svg>
                     </span>
                 </nav>
             </div>

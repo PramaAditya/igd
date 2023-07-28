@@ -3,6 +3,8 @@ const editorElement = document.getElementById('editor');
 const undoElement = document.getElementById('undo');
 const redoElement = document.getElementById('redo');
 
+
+
 editorElement.addEventListener('changed', (event) => {
     undoElement.disabled = !event.detail.canUndo;
     redoElement.disabled = !event.detail.canRedo;
@@ -41,15 +43,22 @@ doneElement.addEventListener('click', () => {
 editorElement.addEventListener('exported', (evt) => {
     const exports = evt.detail.exports;
     const text = exports['text/plain'];
-
+    var inputMode = $('#handwriting_modal').attr('data-input-mode');
+    console.log('inputMode: ', inputMode);
     // console.log(exports['application/vnd.myscript.jiix']);
 
-    if (text == "") {
-        document.getElementById('result').innerHTML = `<span class="opacity-50">Write something fist...</span>`;
-        return;
-    }
+    // if inputMode is input, text replaces the #result element's textarea value
+    // if inputMode is textarea, text adds/appends to the #result textarea value
 
-    document.getElementById('result').innerText = text;
+    // if (inputMode == 'input') {
+        // disable #result as textarea
+        $('#result').prop('disabled', true);
+        document.getElementById('result').value = text;
+    // }
+    // else if (inputMode == 'textarea') {
+    //     $('#result').prop('disabled', false);
+    //     document.getElementById('result').value += text;
+    // }
 });
 
 var $freeEditor = iink.register(editorElement, {

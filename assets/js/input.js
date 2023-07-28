@@ -21,6 +21,15 @@ $(document).ready(function () {
 
     // Example usage of updating input value programmatically
     function updateInputValue(inputElement, newValue) {
+
+        // if inputElement [type="tags"], then append newValue to the value array as {value: newValue};
+        if ($(inputElement).attr('type') == 'tags') {
+            var inputName = $(inputElement).attr('name');
+            var tagifyObject = tagifies[inputName];
+            tagifyObject.addTags([{ value: newValue }]);
+            return;
+        }
+
         try {
             var resolver = IMask.createMask({
                 mask: $(inputElement).attr('data-mask'),
@@ -41,12 +50,17 @@ $(document).ready(function () {
         $currentLabel = $(this).closest('.form-control').find('label');
         $('#label').text($currentLabel.text());
 
-        // if currentInput is textarea, then set the result to html
+        // if currentInput is textarea, set the dialog data-input-mode to 'textarea'
+        if ($currentInput.is('textarea')) {
+            $('#handwriting_modal').attr('data-input-mode', 'textarea');
+        } else {
+            $('#handwriting_modal').attr('data-input-mode', 'input');
+        };
 
     });
 
     $('#done').on('click', function () {
-        var $result = $('#result').html();
+        var $result = $('#result').val();
         // replace all <br> with \n
         $result = $result.replace(/<br>/g, '\n');
 
@@ -57,7 +71,20 @@ $(document).ready(function () {
 
         updateInputValue($currentInput, $result);
 
+        // highlight the input
+        $currentInput.closest('.form-control,field').addClass('highlight');
+        $currentInput.closest('.form-control,field').addClass('active');
+        // add transition to highlight
+        $currentInput.closest('.form-control,field').css('transition', 'all 1s ease');
 
+        // remove highlight after 2 seconds
+        setTimeout(function () {
+            $currentInput.closest('.form-control,field').removeClass('active');
+            //remove transition after 1 second
+            setTimeout(function () {
+                $currentInput.closest('.form-control,field').removeClass('highlight');
+            }, 1000);
+        }, 2000);
     });
 
 
