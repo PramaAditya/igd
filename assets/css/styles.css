@@ -2488,20 +2488,12 @@ html {
   min-width: 90px;
 }
 
-.max-w-\[60px\] {
-  max-width: 60px;
+.max-w-\[80px\] {
+  max-width: 80px;
 }
 
 .max-w-full {
   max-width: 100%;
-}
-
-.max-w-\[90px\] {
-  max-width: 90px;
-}
-
-.max-w-\[80px\] {
-  max-width: 80px;
 }
 
 .flex-shrink-0 {
@@ -3377,7 +3369,7 @@ input[type="number"] {
 }
 
 .tagify__input{
-  height: 100% !important;
+  height: 80% !important;
   --placeholder-color: hsl(var(--bc) / var(--tw-placeholder-opacity)) !important;
   color: hsl(var(--bc) / var(--tw-placeholder-opacity)) !important;
 }
