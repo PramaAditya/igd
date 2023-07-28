@@ -1,0 +1,174 @@
+[
+    {
+        "text": "qd",
+        "desc": "Every day"
+    },
+    {
+        "text": "bid",
+        "desc": "Twice a day"
+    },
+    {
+        "text": "tid",
+        "desc": "Three times a day"
+    },
+    {
+        "text": "qid",
+        "desc": "Four times a day"
+    },
+    {
+        "text": "prn",
+        "desc": "As needed"
+    },
+    {
+        "text": "hs",
+        "desc": "At bedtime"
+    },
+    {
+        "text": "po",
+        "desc": "By mouth (oral administration)"
+    },
+    {
+        "text": "IM",
+        "desc": "Intramuscular (a route of administration)"
+    },
+    {
+        "text": "IV",
+        "desc": "Intravenous (a route of administration)"
+    },
+    {
+        "text": "NPO",
+        "desc": "Nothing by mouth (for fasting before a procedure or surgery)"
+    },
+    {
+        "text": "ASAP",
+        "desc": "As soon as possible"
+    },
+    {
+        "text": "c/o",
+        "desc": "Complains of"
+    },
+    {
+        "text": "Rx",
+        "desc": "Prescription or treatment"
+    },
+    {
+        "text": "s/p",
+        "desc": "Status post (referring to a patient's status after a specific event, e.g., s/p surgery)"
+    },
+    {
+        "text": "Dx",
+        "desc": "Diagnosis"
+    },
+    {
+        "text": "Hx",
+        "desc": "History"
+    },
+    {
+        "text": "WNL",
+        "desc": "Within normal limits"
+    },
+    {
+        "text": "BP",
+        "desc": "Blood pressure"
+    },
+    {
+        "text": "HR",
+        "desc": "Heart rate"
+    },
+    {
+        "text": "RR",
+        "desc": "Respiratory rate"
+    },
+    {
+        "text": "AC",
+        "desc": "Before meals"
+    },
+    {
+        "text": "PC",
+        "desc": "After meals"
+    },
+    {
+        "text": "BID",
+        "desc": "Bis in die (twice a day)"
+    },
+    {
+        "text": "TID",
+        "desc": "Ter in die (three times a day)"
+    },
+    {
+        "text": "QID",
+        "desc": "Quater in die (four times a day)"
+    },
+    {
+        "text": "PRN",
+        "desc": "Pro re nata (as needed)"
+    },
+    {
+        "text": "QD",
+        "desc": "Quaque die (every day)"
+    },
+    {
+        "text": "HS",
+        "desc": "Hora somni (at bedtime)"
+    },
+    {
+        "text": "PO",
+        "desc": "Per os (by mouth/orally)"
+    },
+    {
+        "text": "IM",
+        "desc": "Intramuscular"
+    },
+    {
+        "text": "IV",
+        "desc": "Intravenous"
+    },
+    {
+        "text": "ASA",
+        "desc": "Acetylsalicylic Acid (Aspirin)"
+    },
+    {
+        "text": "APAP",
+        "desc": "Acetaminophen (Paracetamol)"
+    },
+    {
+        "text": "NSAID",
+        "desc": "Nonsteroidal Anti-Inflammatory Drug"
+    },
+    {
+        "text": "HCTZ",
+        "desc": "Hydrochlorothiazide"
+    },
+    {
+        "text": "ACEI",
+        "desc": "Angiotensin-Converting Enzyme Inhibitor"
+    },
+    {
+        "text": "ARB",
+        "desc": "Angiotensin Receptor Blocker"
+    },
+    {
+        "text": "SSRI",
+        "desc": "Selective Serotonin Reuptake Inhibitor"
+    },
+    {
+        "text": "PPI",
+        "desc": "Proton Pump Inhibitor"
+    },
+    {
+        "text": "TCA",
+        "desc": "Tricyclic Antidepressant"
+    },
+    {
+        "text": "BZD",
+        "desc": "Benzodiazepine"
+    },
+    {
+        "text": "statin",
+        "desc": "HMG-CoA Reductase Inhibitor (commonly used to lower cholesterol)"
+    },
+    {
+        "text":"pncl",
+        "desc":"Penicillin"
+    }
+]

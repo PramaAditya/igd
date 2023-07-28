@@ -51,9 +51,9 @@ editorElement.addEventListener('exported', (evt) => {
     // if inputMode is textarea, text adds/appends to the #result textarea value
 
     // if (inputMode == 'input') {
-        // disable #result as textarea
-        $('#result').prop('disabled', true);
-        document.getElementById('result').value = text;
+    // disable #result as textarea
+    $('#result').prop('disabled', true);
+    document.getElementById('result').value = text;
     // }
     // else if (inputMode == 'textarea') {
     //     $('#result').prop('disabled', false);
@@ -65,14 +65,40 @@ editorElement.addEventListener('exported', (evt) => {
 var $customConfig = {};
 $customConfig['addLKText'] = true;
 
-//get /assets/data/medicines_names.txt asynchronously
+function transformData(originalData) {
+    const transformedArray = [];
+
+    for (const item of originalData) {
+        if (item.text) {
+            transformedArray.push(item.text);
+        }
+
+        if (item.desc) {
+            const descParts = item.desc.split(' ');
+            for (const part of descParts) {
+                transformedArray.push(part);
+            }
+        }
+
+        if (item.long_desc) {
+            const longDescParts = item.long_desc.split(' ');
+            for (const part of longDescParts) {
+                transformedArray.push(part);
+            }
+        }
+    }
+
+    return transformedArray;
+}
+
 $.ajax({
-    url: '/assets/data/medicines_names.txt',
+    url: '/assets/data/doctorShorthands.json',
     dataType: 'text',
     async: false,
     success: function (data) {
-        // console.log(data);
-        $customConfig['customLexicon'] = data.split('\r\n');
+        $customConfig['customLexicon'] = transformData(JSON.parse(data));
+
+
     }
 });
 
@@ -107,7 +133,7 @@ var $freeEditor = iink.register(editorElement, {
                 }
             }
 
-            
+
 
 
         },
@@ -116,8 +142,8 @@ var $freeEditor = iink.register(editorElement, {
 });
 
 $freeEditor.theme = { ink: { color: '#FFFFFF' } };
-$freeEditor.penStyle = {'color':'#FFFFFF','-myscript-pen-width':'1'};
-console.log (editorElement.editor.configuration);
+$freeEditor.penStyle = { 'color': '#FFFFFF', '-myscript-pen-width': '1' };
+console.log(editorElement.editor.configuration.recognitionParams.iink.text.configuration.customLexicon);
 
 
 
