@@ -61,12 +61,22 @@ editorElement.addEventListener('exported', (evt) => {
     // }
 });
 
-$customConfig = {};
+// Add Custom Lexicon to IINK Recognizer
+var $customConfig = {};
 $customConfig['addLKText'] = true;
 
-$.get('/assets/data/medicines_names.txt', function(data) {
-    $customConfig['customLexicon'] = data.split('\n');
+//get /assets/data/medicines_names.txt asynchronously
+$.ajax({
+    url: '/assets/data/medicines_names.txt',
+    dataType: 'text',
+    async: false,
+    success: function (data) {
+        // console.log(data);
+        $customConfig['customLexicon'] = data.split('\r\n');
+    }
 });
+
+
 
 
 
@@ -107,7 +117,7 @@ var $freeEditor = iink.register(editorElement, {
 
 $freeEditor.theme = { ink: { color: '#FFFFFF' } };
 $freeEditor.penStyle = {'color':'#FFFFFF','-myscript-pen-width':'1'};
-// console.log ($freeEditor.configuration.recognitionParams.iink.text.configuration.customLexicon);
+console.log (editorElement.editor.configuration);
 
 
 
