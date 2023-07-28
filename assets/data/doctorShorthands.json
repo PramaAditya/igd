@@ -170,5 +170,15 @@
     {
         "text":"pncl",
         "desc":"Penicillin"
+    },
+    {
+        "text":"tab",
+        "desc":"tablet"
+    },
+    {
+        "text":"cap",
+        "desc":"capsule"
     }
+    
+
 ]
