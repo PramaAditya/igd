@@ -2512,6 +2512,10 @@ html {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.resize-none {
+  resize: none;
+}
+
 .resize {
   resize: both;
 }
@@ -2968,6 +2972,8 @@ input[type="datetime-local"],
 input[type="month"],
 input[type="week"] {
   width: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 input[type="number"] {

@@ -48,7 +48,7 @@
                             
 
                     </a>
-                    <input name="pulse" type="number" class="join-item">
+                    <input name="pulse" type="number" step="any" class="join-item">
                     <span class="ml-2">/mnt</span>
                 </div>
             </field>
@@ -63,7 +63,7 @@
                             
 
                     </a>
-                    <input name="respitory_rate" type="number" class="join-item">
+                    <input name="respitory_rate" type="number" step="any" class="join-item">
                     <span class="ml-2">/mnt</span>
                 </div>
             </field>
@@ -78,7 +78,7 @@
                             
 
                     </a>
-                    <input name="temperature" type="number" class="join-item max-w-[80px]">
+                    <input name="temperature" type="number" step="any" class="join-item max-w-[80px]">
                     <span class="ml-2">°C</span>
                 </div>
             </field>
@@ -164,7 +164,7 @@
     </form>
 
 
-    <dialog id="handwriting_modal" class="modal bg-base-100" data-input-mode="">
+    <dialog id="handwriting_modal" class="modal bg-base-100" >
         <form method="dialog">
             <div class="flex flex-col w-screen h-screen">
 
@@ -174,7 +174,7 @@
                         <span id="label" class="text-lg">Hello</span>
                         <div class="flex w-full gap-2 items-center h-full">
                             <textarea name="result" id="result" placeholder="Tulis dulu dibawah..."
-                                class="h-full text-lg textarea textarea-ghost w-full"></textarea>
+                                class="h-full text-lg textarea textarea-bordered w-full resize-none"></textarea>
                             <button id="done" class="btn btn-success">Submit</button>
                         </div>
                     </div>

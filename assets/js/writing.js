@@ -2,7 +2,7 @@ const editorElement = document.getElementById('editor');
 
 const undoElement = document.getElementById('undo');
 const redoElement = document.getElementById('redo');
-
+const resultElement = document.getElementById('result');
 
 
 editorElement.addEventListener('changed', (event) => {
@@ -41,25 +41,32 @@ doneElement.addEventListener('click', () => {
 });
 
 editorElement.addEventListener('exported', (evt) => {
-    const exports = evt.detail.exports;
-    const text = exports['text/plain'];
-    var inputMode = $('#handwriting_modal').attr('data-input-mode');
-    console.log('inputMode: ', inputMode);
-    // console.log(exports['application/vnd.myscript.jiix']);
+    var exports = evt.detail.exports;
+    var text = exports['text/plain'];
 
-    // if inputMode is input, text replaces the #result element's textarea value
-    // if inputMode is textarea, text adds/appends to the #result textarea value
-
-    // if (inputMode == 'input') {
-    // disable #result as textarea
-    $('#result').prop('disabled', true);
+    if ($currentInput) {
+        var inputType = $currentInput.attr('type');
+        if (inputType == 'number') {
+            console.log('number detected');
+            text = convertSimilarLettersToNumbers(text);
+        }
+    }
     document.getElementById('result').value = text;
-    // }
-    // else if (inputMode == 'textarea') {
-    //     $('#result').prop('disabled', false);
-    //     document.getElementById('result').value += text;
-    // }
 });
+
+
+//When resultElement is changed, import the value to Editor
+let typingTimer;
+const doneTypingInterval = 1000;
+
+resultElement.addEventListener('input', () => {
+  clearTimeout(typingTimer);
+  typingTimer = setTimeout(() => {
+    // This code will execute after the user stops typing for 0.5 seconds
+    editorElement.editor.import_(resultElement.value, 'text/plain');
+  }, doneTypingInterval);
+});
+
 
 // Add Custom Lexicon to IINK Recognizer
 var $customConfig = {};
@@ -103,10 +110,6 @@ $.ajax({
 });
 
 
-
-
-
-
 var $freeEditor = iink.register(editorElement, {
     recognitionParams: {
         type: 'TEXT',
@@ -121,7 +124,7 @@ var $freeEditor = iink.register(editorElement, {
             text: {
                 smartGuide: false,
                 guides: {
-                    enable: false
+                    enable: true
                 },
                 configuration: $customConfig
 
@@ -150,4 +153,47 @@ console.log(editorElement.editor.configuration.recognitionParams.iink.text.confi
 window.addEventListener('resize', () => {
     editorElement.editor.resize();
 });
+
+function convertSimilarLettersToNumbers(inputString) {
+    const similarLetterMapping = {
+        'o': '0',
+        'z': '2',
+        'l': '1',
+        'a': '4',
+        's': '5',
+        'b': '6',
+        't': '7',
+        'g': '9',
+        'i': '1',
+        'q': '9',
+        'O': '0',
+        'Z': '2',
+        'S': '5',
+        'B': '6',
+        'G': '9',
+        'I': '1',
+        'Q': '9',
+        'A': '4',
+        'E': '3',
+        'T': '7',
+        'L': '1',
+        'B': '8',
+        'S': '8',
+        'E': '8',
+        ',': '.',
+        // Add more mappings as needed.
+    };
+
+    // Regular expression to match the similar letters (case-insensitive).
+    const regex = new RegExp(Object.keys(similarLetterMapping).join('|'), 'gi');
+
+    return inputString.replace(regex, matchedLetter => similarLetterMapping[matchedLetter.toLowerCase()])
+        .replace(/[^0-9.\/"'°\-]/g, ''); // Remove any non-numeric characters not in the mappings except ".", "-", "/", "\"", "'", and "°".
+}
+
+// Test the function:
+const input = "10z2,lH/x\"y'z°";
+const output = convertSimilarLettersToNumbers(input);
+console.log(output); // Output: "1022,148"
+
 

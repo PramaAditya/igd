@@ -46,16 +46,23 @@ $(document).ready(function () {
 
     $writeBtn.on('click', function () {
         $currentInput = $(this).closest('.form-control').find('input,textarea');
+        $currentValue = $currentInput.val();
         console.log($currentInput[0]);
         $currentLabel = $(this).closest('.form-control').find('label');
         $('#label').text($currentLabel.text());
 
         // if currentInput is textarea, set the dialog data-input-mode to 'textarea'
         if ($currentInput.is('textarea')) {
-            $('#handwriting_modal').attr('data-input-mode', 'textarea');
+            editorElement.editor.configuration.recognitionParams.iink.text.guides.enable = true;
         } else {
-            $('#handwriting_modal').attr('data-input-mode', 'input');
+            editorElement.editor.configuration.recognitionParams.iink.text.guides.enable = false;
         };
+
+        // if currentInput type!='tags' then 
+        if ($currentInput.attr('type') != 'tags') {
+            editorElement.editor.import_($currentValue, 'text/plain');
+        };
+        
 
     });
 
@@ -63,11 +70,6 @@ $(document).ready(function () {
         var $result = $('#result').val();
         // replace all <br> with \n
         $result = $result.replace(/<br>/g, '\n');
-
-        // if currentinput is type=number, then remove all non numeric character from result
-        if ($currentInput.attr('type') == 'number') {
-            $result = $result.replace(/\D/g, '');
-        }
 
         updateInputValue($currentInput, $result);
 
