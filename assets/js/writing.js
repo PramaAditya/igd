@@ -117,7 +117,7 @@ var $freeEditor = iink.register(editorElement, {
             text: {
                 smartGuide: false,
                 guides: {
-                    enable: true
+                    enable: false
                 },
                 configuration: $customConfig
 
@@ -139,7 +139,7 @@ var $freeEditor = iink.register(editorElement, {
 
 $freeEditor.theme = { ink: { color: '#FFFFFF' } };
 $freeEditor.penStyle = { 'color': '#FFFFFF', '-myscript-pen-width': '1' };
-console.log(editorElement.editor.configuration.recognitionParams.iink.text.configuration.customLexicon);
+// console.log(editorElement.editor.configuration.recognitionParams.iink.text.configuration.customLexicon);
 
 
 
